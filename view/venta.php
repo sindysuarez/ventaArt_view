@@ -21,7 +21,7 @@
                 <i class="rocket icon"></i>
               </a>
               <a class=" item" href="/acerca/">
-                <i class="user icon"></i> 
+                <i class="user icon"></i>
               </a>
             </div>
           </div>

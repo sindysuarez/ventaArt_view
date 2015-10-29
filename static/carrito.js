@@ -19,15 +19,18 @@ $(function(){
     products.push(newproducts);
     localStorage["products"]=JSON.stringify(products);
     // alert(localStorage["products"]);
-    // localStorage.removeItem("products");
-
     renderHTML();
     return false;
   });
 });
 
 function renderHTML() {
-  if(localStorage["products"].length!=2){
+  var itemsProducts = document.getElementById('itemsProducts');
+  if(localStorage["products"]){
+    if(localStorage["products"].length==2){
+      localStorage.removeItem("products");
+      renderHTML();
+    }
     var products = JSON.parse(localStorage["products"]);
     var items=" ";
     var i=0;
@@ -42,13 +45,12 @@ function renderHTML() {
       items+=description;
     }
     var totalFac = document.getElementById('total');
-    var itemsProducts = document.getElementById('itemsProducts');
     totalFac.value = "$"+totalFactura.toLocaleString();
     itemsProducts.innerHTML = items;
   }else{
-    var itemsProducts = document.getElementById('itemsProducts');
     itemsProducts.innerHTML = "<h2 class='ui header'>Aun no se ha agregado productos</h2>";
   }
+  
 }
 
 function eliminar(pos) {
